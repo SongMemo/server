@@ -2,7 +2,7 @@
 <template>
   <div>
     <div class="form-group">
-      <router-link :to="{name: 'songs.add'}" class="btn btn-success">{{ $t('add_new_song') }}</router-link>
+      <router-link :to="{name: 'songs.add'}" class="btn btn-success">{{ $t('add_song') }}</router-link>
     </div>
 
     <card :title="$t('songs_list')" >
@@ -23,12 +23,13 @@
             </td>
             <td width="200">
               <router-link :to="{name: 'songs.edit', params: {id: song.id}}" class="btn btn-xs btn-default">
-                <!-- <fa icon="spinner" todo: fix icons />-->
+                <!-- <fa icon="edit" todo: fix icons />-->
                 {{ $t('edit') }}
               </router-link>
               <a href="#"
                  class="btn btn-xs btn-danger"
                  v-on:click="deleteEntry(song.id, index)">
+                <!-- <fa icon="trash" todo: fix icons />-->
                 {{ $t('delete') }}
               </a>
             </td>
