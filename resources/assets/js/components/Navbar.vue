@@ -13,7 +13,7 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarToggler">
-        <ul class="navbar-nav">
+        <ul v-if="user" class="navbar-nav">
           <li class="nav-item">
             <router-link :to="{ name: 'songs' }" class="nav-link">
               {{ $t('songs') }}

@@ -15,6 +15,11 @@ const SongsAdd = () => import('~/pages/songs/add').then(m => m.default || m)
 const SongsView = () => import('~/pages/songs/view').then(m => m.default || m)
 const SongsEdit = () => import('~/pages/songs/edit').then(m => m.default || m)
 
+const Sets = () => import('~/pages/sets/index').then(m => m.default || m)
+const SetsCreate = () => import('~/pages/sets/create').then(m => m.default || m)
+const SetsView = () => import('~/pages/sets/view').then(m => m.default || m)
+const SetsEdit = () => import('~/pages/sets/edit').then(m => m.default || m)
+
 export default [
   { path: '/', name: 'welcome', component: Welcome },
 
@@ -30,11 +35,18 @@ export default [
     { path: 'password', name: 'settings.password', component: SettingsPassword }
   ] },
 
+  // todo: use 'children'
   // Songs
   { path: '/songs', name: 'songs', component: Songs },
-  { path: '/songs/:id', name: 'songs.view', component: SongsView },
   { path: '/songs/add', name: 'songs.add', component: SongsAdd },
+  { path: '/songs/:id', name: 'songs.view', component: SongsView },
   { path: '/songs/edit/:id', name: 'songs.edit', component: SongsEdit },
+
+  // Sets
+  { path: '/sets', name: 'sets', component: Sets },
+  { path: '/sets/create', name: 'sets.create', component: SetsCreate },
+  { path: '/sets/:id', name: 'sets.view', component: SetsView },
+  { path: '/sets/edit/:id', name: 'sets.edit', component: SetsEdit },
 
   { path: '*', component: require('~/pages/errors/404.vue') }
 ]
