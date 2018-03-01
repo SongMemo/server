@@ -24,8 +24,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::patch('settings/password', 'Settings\PasswordController@update');
 
     Route::resource('songs', 'API\SongController', ['except' => ['create', 'edit']]);
-    Route::resource('key', 'API\KeyController', ['except' => ['create', 'edit']]);
-    Route::resource('set', 'API\SetController', ['except' => ['create', 'edit']]);
+    Route::resource('keys', 'API\KeyController', ['except' => ['create', 'edit']]);
+    Route::resource('sets', 'API\SetController', ['except' => ['create', 'edit']]);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {

@@ -10,6 +10,11 @@ const Settings = () => import('~/pages/settings/index').then(m => m.default || m
 const SettingsProfile = () => import('~/pages/settings/profile').then(m => m.default || m)
 const SettingsPassword = () => import('~/pages/settings/password').then(m => m.default || m)
 
+const Songs = () => import('~/pages/songs/index').then(m => m.default || m)
+const SongsAdd = () => import('~/pages/songs/add').then(m => m.default || m)
+const SongsView = () => import('~/pages/songs/view').then(m => m.default || m)
+const SongsEdit = () => import('~/pages/songs/edit').then(m => m.default || m)
+
 export default [
   { path: '/', name: 'welcome', component: Welcome },
 
@@ -24,6 +29,12 @@ export default [
     { path: 'profile', name: 'settings.profile', component: SettingsProfile },
     { path: 'password', name: 'settings.password', component: SettingsPassword }
   ] },
+
+  // Songs
+  { path: '/songs', name: 'songs', component: Songs },
+  { path: '/songs/:id', name: 'songs.view', component: SongsView },
+  { path: '/songs/add', name: 'songs.add', component: SongsAdd },
+  { path: '/songs/edit/:id', name: 'songs.edit', component: SongsEdit },
 
   { path: '*', component: require('~/pages/errors/404.vue') }
 ]

@@ -19,6 +19,11 @@
               {{ $t('songs') }}
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link :to="{ name: 'sets' }" class="nav-link">
+              {{ $t('sets') }}
+            </router-link>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
