@@ -1,6 +1,6 @@
 # Songmemo 
 
-<a href="https://travis-ci.org/songmemo/server"><img src="https://travis-ci.org/songmemo/server.svg?branch=master" alt="Build Status"></a>
+[![Build Status](https://travis-ci.org/songmemo/server.svg?branch=master)](https://travis-ci.org/songmemo/server)
 <a href="https://packagist.org/packages/songmemo/server"><img src="https://poser.pugx.org/songmemo/server/v/stable.svg" alt="Latest Stable Version"></a>
 
 > A Laravel-Vue SPA project.
