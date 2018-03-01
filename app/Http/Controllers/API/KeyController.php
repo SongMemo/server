@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Key;
-use Illuminate\Http\Request;
 
 class KeyController extends Controller
 {
@@ -12,29 +12,8 @@ class KeyController extends Controller
         return Key::all();
     }
 
-    public function show(Key $key)
+    public function show($id)
     {
-        return $key;
-    }
-
-    public function store(Request $request)
-    {
-        $key = Key::create($request->all());
-
-        return response()->json($key, 201);
-    }
-
-    public function update(Request $request, Key $key)
-    {
-        $key->update($request->all());
-
-        return response()->json($key, 200);
-    }
-
-    public function delete(Key $key)
-    {
-        $key->delete();
-
-        return response()->json(null, 204);
+        return Key::findOrFail($id);
     }
 }

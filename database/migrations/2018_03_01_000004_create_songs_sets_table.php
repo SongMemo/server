@@ -7,15 +7,33 @@ use Illuminate\Database\Migrations\Migration;
 class CreateSongsSetsTable extends Migration
 {
     /**
+     * @var string
+     */
+    public $tableName = 'sets';
+
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('songs_sets', function (Blueprint $table) {
-            $table->increments('id');
+        if (Schema::hasTable($this->tableName)) return;
+
+        Schema::create($this->tableName, function (Blueprint $table) {
+            $table->integer('song_id')->unsigned()->nullable();
+            $table->integer('set_id')->unsigned()->nullable();
             $table->timestamps();
+
+            $table->foreign('song_id')->references('id')
+                ->on('songs')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+
+            $table->foreign('set_id')->references('id')
+                ->on('set_id')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 
@@ -26,6 +44,6 @@ class CreateSongsSetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs_sets');
+        Schema::dropIfExists($this->tableName);
     }
 }

@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Set extends Model
 {
-    //
+    protected $fillable = ['title', 'date', 'notes'];
 }

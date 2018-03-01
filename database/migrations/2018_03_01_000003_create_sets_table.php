@@ -6,7 +6,9 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSetsTable extends Migration
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $tableName = 'sets';
 
     /**
@@ -19,8 +21,6 @@ class CreateSetsTable extends Migration
         if (Schema::hasTable($this->tableName)) return;
 
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->string('title');
             $table->dateTime('date');

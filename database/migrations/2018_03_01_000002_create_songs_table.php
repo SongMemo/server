@@ -6,7 +6,9 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateSongsTable extends Migration
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     public $tableName = 'songs';
 
     /**
@@ -19,18 +21,13 @@ class CreateSongsTable extends Migration
         if (Schema::hasTable($this->tableName)) return;
 
         Schema::create($this->tableName, function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-
             $table->increments('id');
             $table->integer('key_id')->unsigned()->nullable();
             $table->string('title');
             $table->text('text')->nullable();
             $table->timestamps();
-        });
 
-        Schema::table($this->tableName, function (Blueprint $table) {
-            $table->foreign('key_id')
-                ->references('id')
+            $table->foreign('key_id')->references('id')
                 ->on('keys')
                 ->onUpdate('cascade')
                 ->onDelete('set null');

@@ -22,10 +22,14 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
+
+    Route::resource('songs', 'API\SongController', ['except' => ['create', 'edit']]);
+    Route::resource('key', 'API\KeyController', ['except' => ['create', 'edit']]);
+    Route::resource('set', 'API\SetController', ['except' => ['create', 'edit']]);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
-    Route::post('login', 'Auth\LoginController@login');
+    Route::post('login', 'Auth\LoginController@login')->name("login");
     Route::post('register', 'Auth\RegisterController@register');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');

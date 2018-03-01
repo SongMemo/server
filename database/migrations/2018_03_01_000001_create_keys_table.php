@@ -7,15 +7,22 @@ use Illuminate\Database\Migrations\Migration;
 class CreateKeysTable extends Migration
 {
     /**
+     * @var string
+     */
+    public $tableName = 'keys';
+
+    /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('keys', function (Blueprint $table) {
+        if (Schema::hasTable($this->tableName)) return;
+
+        Schema::create($this->tableName, function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
+            $table->string('title', 3)->unique();
         });
     }
 
@@ -26,6 +33,6 @@ class CreateKeysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('keys');
+        Schema::dropIfExists($this->tableName);
     }
 }
